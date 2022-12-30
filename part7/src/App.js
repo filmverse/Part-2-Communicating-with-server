@@ -52,6 +52,7 @@ const App = () => {
             capital:{country.capital}<br />
             area:{country.area}<br />
             flag:{country.flag}
+            <button>show</button>
           </div>
         )
       )}
