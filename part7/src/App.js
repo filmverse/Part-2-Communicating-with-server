@@ -46,10 +46,19 @@ const App = () => {
       )}
 
       {filteredCountries.length <= 10 && filteredCountries.length > 1 && filteredCountries.map(
-        country => <div key={country.name}>name:{country.name}<br />capital:{country.capital}<br />area:{country.area}<br />flag:{country.flag}</div>
+        country => (
+          <div key={country.name}>
+            name:{country.name}<br />
+            capital:{country.capital}<br />
+            area:{country.area}<br />
+            flag:{country.flag}
+          </div>
+        )
       )}
 
-      {filteredCountries.length === 1 && <CountryDetails country={filteredCountries[0]} />}
+      {filteredCountries.length === 1 && (
+        <CountryDetails country={filteredCountries[0]} />
+      )}
 
       <h1>Countries</h1>
 
