@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CountryDetails from "./components/CountryDetails";
 
 const App = () => {
 
@@ -48,22 +49,7 @@ const App = () => {
         country => <div key={country.name}>name:{country.name}<br />capital:{country.capital}<br />area:{country.area}<br />flag:{country.flag}</div>
       )}
 
-      {filteredCountries.length === 1 && (
-        <div>
-          <h1>{filteredCountries[0].name}</h1>
-          <h2>{filteredCountries[0].capital}</h2>
-          <h2>{filteredCountries[0].area}</h2>
-          <h2>Languages</h2>
-          <ul>
-            {Object.values(filteredCountries[0].language).map(
-              language => <li key={language}>{language}</li>
-            )}
-          </ul>
-          <div>
-            <img src={filteredCountries[0].flags.png} alt={`${filteredCountries[0].name} flag`} />
-          </div>
-        </div>
-      )}
+      {filteredCountries.length === 1 && <CountryDetails country={filteredCountries[0]} />}
 
       <h1>Countries</h1>
 
