@@ -62,7 +62,14 @@ const App = () => {
 
       <h1>Countries</h1>
 
-      {countries.map((country) => <p key={country.name}>name:{country.name}<br />capital:{country.capital}<br />area:{country.area}<br />flag:{country.flag}</p>)}
+      {countries.map((country) => (
+        <p key={country.name}>
+          name:{country.name}<br />
+          capital:{country.capital}<br />
+          area:{country.area}<br />
+          flag:{country.flag}
+        </p>
+      ))}
     </div>
   )
 }
