@@ -67,7 +67,9 @@ const App = () => {
         <CountryDetails country={filteredCountries[0]} />
       )}
 
-      {viewCountry.name && <CountryDetails country={viewCountry} />}
+      {viewCountry.name && (
+        <CountryDetails country={viewCountry} />
+      )}
 
       <h1>Countries</h1>
 
