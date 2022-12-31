@@ -7,6 +7,9 @@ const App = () => {
 
   const [ countries, setCountries ] = useState([])
   const [ query, setQuery ] = useState('')
+  const [ viewCountry, setViewCountry ] = useState({})
+
+  console.log(viewCountry)
 
   const dev = () => {
     axios.get('https://restcountries.com/v3.1/all').then(response => {
@@ -29,11 +32,14 @@ const App = () => {
 
   const handleChange = (event) => {
     setQuery(event.target.value.toLowerCase())
+    setViewCountry({})
   }
 
   const filteredCountries = countries.filter(
     countrys => countrys.name.toLowerCase().includes(query)
   )
+
+  const handleViewCountry = (e) => () => setViewCountry(filteredCountries.filter(countrys => countrys.name.includes(e))[0])
 
   return (
     <div>
@@ -52,7 +58,7 @@ const App = () => {
             capital:{country.capital}<br />
             area:{country.area}<br />
             flag:{country.flag}
-            <button>show</button>
+            <button onClick={handleViewCountry(country.name)}>show</button>
           </div>
         )
       )}
@@ -60,6 +66,8 @@ const App = () => {
       {filteredCountries.length === 1 && (
         <CountryDetails country={filteredCountries[0]} />
       )}
+
+      {viewCountry.name && <CountryDetails country={viewCountry} />}
 
       <h1>Countries</h1>
 
