@@ -23,6 +23,12 @@
       "date": "2023-01-06T19:10:29.873Z",
       "important": false,
       "id": 4
+    },
+    {
+      "content": "new note",
+      "date": "2023-01-07T13:18:57.755Z",
+      "important": true,
+      "id": 5
     }
   ]
 }
