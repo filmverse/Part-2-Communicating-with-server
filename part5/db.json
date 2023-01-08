@@ -21,7 +21,7 @@
     {
       "content": "abcdefghijklmnopqrstuvwxty",
       "date": "2023-01-06T19:10:29.873Z",
-      "important": true,
+      "important": false,
       "id": 4
     },
     {
@@ -33,7 +33,7 @@
     {
       "content": "updated note",
       "date": "2023-01-08T19:27:57.528Z",
-      "important": true,
+      "important": false,
       "id": 6
     },
     {
@@ -41,6 +41,18 @@
       "date": "2023-01-08T19:28:01.687Z",
       "important": false,
       "id": 7
+    },
+    {
+      "content": "new note is added",
+      "date": "2023-01-08T19:40:38.243Z",
+      "important": false,
+      "id": 8
+    },
+    {
+      "content": "another new note is aded",
+      "date": "2023-01-08T19:44:27.928Z",
+      "important": true,
+      "id": 9
     }
   ]
 }
