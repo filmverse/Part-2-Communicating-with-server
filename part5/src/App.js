@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import Note from "./components/Note";
+import noteServise from "./services/notes"
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
 
   const hook = () => {
     console.log('effect')
-    axios.get('http://localhost:3001/notes').then(response => {
+    noteServise.getAll().then(response => {
       console.log('promise fulfilled')
       setNotes(response.data)
     })
@@ -26,10 +27,10 @@ const App = () => {
     event.preventDefault()
     const noteObject = {
       content: newNote,
-      date: new Date(),
+      date: new Date().toISOString(),
       important: Math.random() < 0.5,
     }
-    axios.post('http://localhost:3001/notes', noteObject).then(
+    noteServise.create(noteObject).then(
       response => {
         setNotes(notes.concat(response.data))
         setNewNote('')
@@ -50,10 +51,10 @@ const App = () => {
 
   const toggleImportanceOf = (id) => {
     console.log(`importance of ${id} needs to be togged`)
-    const url = `http://localhost:3001/notes/${id}`
+    // const url = `http://localhost:3001/notes/${id}`
     const note = notes.find(n => n.id === id)
     const changeNote = { ...note, important: !note.important }
-    axios.put(url, changeNote).then(response => {
+    noteServise.update(id, changeNote).then(response => {
       setNotes(notes.map(n => n.id !== id ? n : response.data))
     })
   }
