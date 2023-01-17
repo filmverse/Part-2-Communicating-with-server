@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
-import contactService from "./services/Adps"
+import personService from "./services/Adps"
 
 const App = () => {
 
@@ -15,7 +15,7 @@ const App = () => {
   const [filterQuery, setFilterQuery] = useState('')
 
   const hook = () => {
-    contactService.getAll().then(initialPersons => {
+    personService.getAll().then(initialPersons => {
       setPersons(initialPersons)
     })
   }
@@ -31,7 +31,7 @@ const App = () => {
         name: newName,
         number: newNumber
       }
-      contactService.create(newPerson).then(
+      personService.create(newPerson).then(
         returnedPerson => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
