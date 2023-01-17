@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
+import contactService from "./services/Adps"
 
 const App = () => {
 
@@ -15,9 +15,8 @@ const App = () => {
   const [filterQuery, setFilterQuery] = useState('')
 
   const hook = () => {
-    axios.get('http://localhost:3001/persons').then(response => {
-      console.log(response)
-      setPersons(response.data)
+    contactService.getAll().then(initialPersons => {
+      setPersons(initialPersons)
     })
   }
 
@@ -32,9 +31,9 @@ const App = () => {
         name: newName,
         number: newNumber
       }
-      axios.post('http://localhost:3001/persons', newPerson).then(
-        response => {
-          setPersons(persons.concat(response.data))
+      contactService.create(newPerson).then(
+        returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
         }
@@ -42,7 +41,7 @@ const App = () => {
     }
   }
 
-  const handleChange = setValue => event => setValue(event.target.value.toLocaleLowerCase())
+  const handleChange = setValue => event => setValue(event.target.value)
 
   return (
     <div>
