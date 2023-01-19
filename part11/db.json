@@ -32,13 +32,18 @@
     },
     {
       "name": "Albus Dumbaldor",
-      "number": "7532159875",
+      "number": "75321598746",
       "id": 7
     },
     {
-      "name": "new contact",
-      "number": "5757745745745",
+      "name": "Harry Porter",
+      "number": "12365478901",
       "id": 8
+    },
+    {
+      "name": "testing",
+      "number": "78963214501",
+      "id": 9
     }
   ]
 }

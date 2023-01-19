@@ -41,8 +41,13 @@ const App = () => {
     }
   }
 
-  const removePerson = (event) => {
-    event.preventDefault()
+  const removePerson = (id, name) => () => {
+    if (window.confirm(`Delete ${name}?`)){
+      personService.remove(id).then(deletedPerson => {
+        console.log(deletedPerson)
+        setPersons(persons.filter(person => person.name !== deletedPerson.name))
+      })
+    }
   }
 
   const handleChange = setValue => event => setValue(event.target.value)
@@ -58,13 +63,18 @@ const App = () => {
         changeName={handleChange(setNewName)}
         changeNumber={handleChange(setNewNumber)}
         addPerson={addPerson}
-        removePerson={removePerson}
       />
       <h2>Numbers</h2>
-      <Persons persons={persons} query={filterQuery} />
+      <Persons
+        persons={persons}
+        query={filterQuery}
+        removePerson={removePerson}
+      />
       debug_name: {newName}
       <br />
       debug_number: {newNumber}
+      <br />
+      debug_search: {filterQuery}
     </div>
   )
 }
