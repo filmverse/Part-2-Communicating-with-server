@@ -4,7 +4,7 @@ const Persons = ({ persons, query }) => {
         <div>
             {persons
                 .filter(person => person.name.toLocaleLowerCase().includes(query))
-                .map(person => <p key={person.name}>{person.name} {person.number}</p>)}
+                .map(person => <p key={person.name}>{person.name} {person.number} <button>delete</button></p>)}
         </div>
     )
 }

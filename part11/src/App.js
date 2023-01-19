@@ -41,6 +41,10 @@ const App = () => {
     }
   }
 
+  const removePerson = (event) => {
+    event.preventDefault()
+  }
+
   const handleChange = setValue => event => setValue(event.target.value)
 
   return (
@@ -48,7 +52,14 @@ const App = () => {
       <h1>Phonebook</h1>
       <Filter query={filterQuery} change={handleChange(setFilterQuery)} />
       <h2>add a new</h2>
-      <PersonForm name={newName} number={newNumber} changeName={handleChange(setNewName)} changeNumber={handleChange(setNewNumber)} addPerson={addPerson} />
+      <PersonForm
+        name={newName}
+        number={newNumber}
+        changeName={handleChange(setNewName)}
+        changeNumber={handleChange(setNewNumber)}
+        addPerson={addPerson}
+        removePerson={removePerson}
+      />
       <h2>Numbers</h2>
       <Persons persons={persons} query={filterQuery} />
       debug_name: {newName}
